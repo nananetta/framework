@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class name="com.konkow.framework.domain.ume.Role" table="UME_M_ROLE">
+		
+		<id name="id" type="long">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+		<version name="rowVersion" column="ROW_VERSION" />
+
+		<set  inverse="true" lazy="true" name="users" table="UME_M_MAPPING_ROLE_USER">
+			<key>
+				<column name="ROLE_ID" />
+			</key>
+			<many-to-many entity-name="com.konkow.framework.domain.ume.User" not-found="ignore" >
+			    <column name="USER_ID" />
+			</many-to-many>
+		</set>
+
+		<bag  inverse="true" lazy="true"  name="auths" table="UME_M_MAPPING_AUTH_ROLE">
+			<key>
+				<column name="ROLE_ID" />
+			</key>
+			<many-to-many entity-name="com.konkow.framework.domain.ume.Authorization" not-found="ignore" >
+			    <column name="AUTH_ID" />
+			</many-to-many>
+		</bag>
+		
+		<property name="roleCode" column="ROLE_CODE" unique="true" />
+		<property name="roleName" column="ROLE_NAME" />
+
+		<property name="lastUpdateDate" column="LASTUPDATE_DATE" />
+		<property name="lastUpdateBy" column="LASTUPDATE_BY" />
+		<property name="createDate" column="CREATE_DATE" />
+		<property name="createBy" column="CREATE_BY" />
+	</class>
+</hibernate-mapping>

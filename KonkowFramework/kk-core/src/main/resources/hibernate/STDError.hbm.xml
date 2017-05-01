@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class name="com.konkow.framework.domain.ClassicError" table="STD_M_Error" lazy="false" mutable="false">
+		<cache usage="read-only" region="com.konkow.framework.domain.ClassicError"/>
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+		<version name="rowVersion" column="ROW_VERSION" />
+		<property name="code" column="ERROR_CODE" />
+		<property name="description" column="ERROR_TEXT" />
+        <property name="severity" column="SEVERITY" />
+
+		<property name="lastUpdateDate" column="LASTUPDATE_DATE" />
+		<property name="lastUpdateBy" column="LASTUPDATE_BY" />
+		<property name="createDate" column="CREATE_DATE" />
+		<property name="createBy" column="CREATE_BY" />
+	</class>
+</hibernate-mapping>

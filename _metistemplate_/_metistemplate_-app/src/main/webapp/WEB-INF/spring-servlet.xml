@@ -1,0 +1,192 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/cache
+	http://www.springframework.org/schema/cache/spring-cache.xsd	
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+	<!-- Scan for all of Spring components such as Spring Service -->
+	<context:component-scan base-package="com.konkow.framework" />
+	<context:component-scan base-package="com.metis._metistemplate_" />
+
+	<!-- View -->
+	<mvc:view-controller path="/" view-name="index" />
+	<mvc:view-controller path="/index.html" />
+	<mvc:view-controller path="/indexStaff.html" />
+	<mvc:view-controller path="/error.html" />
+	<mvc:view-controller path="/unauthorized.html" />
+	<mvc:view-controller path="/login.html" />
+	<mvc:view-controller path="/forgetPassword.html" />
+
+	<mvc:view-controller path="/umeMaster/umeChangePassword.html" />
+	<mvc:view-controller path="/umeMaster/umeRoleSearch.html" />
+	<mvc:view-controller path="/umeMaster/umeRoleSearchModal.html" />
+	<mvc:view-controller path="/umeMaster/umeUserEdit.html" />
+	<mvc:view-controller path="/umeMaster/umeUserEntry.html" />
+	<mvc:view-controller path="/umeMaster/umeUserSearch.html" />
+
+	<!-- Enable Spring Annotation Configuration -->
+	<context:annotation-config />
+
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.konkow.framework.domain.HibernateAwareObjectMapper" />
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+						/> -->
+					<property name="prefix" value="/WEB-INF/pages/" />
+					<property name="suffix" value=".jsp" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+					<property name="prefixJson" value="true" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<mvc:resources mapping="/**" location="/" />
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ENGLISH" />
+	</bean>
+
+	<!-- Define Orika Mapper Factory -->
+	<bean id="mapperFactory" class="com.konkow.framework.domain.MapperFactoryFactory">
+	</bean>
+
+	<bean id="tilesConfiguration"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles-definitions.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Define SessionFactory bean -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/hibernate/hibernate.cfg.xml" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+				</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.dialect">${db.hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- <prop key="hibernate.default_schema">${db.hibernate.default_schema}</prop> -->
+			</props>
+		</property>
+	</bean>
+	<!-- Transaction Manager is defined -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Detect @Transactional Annotation -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="ehcache" />
+	</bean>
+
+	<bean id="ehcache"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:ehcache.xml" />
+		<property name="shared" value="true" />
+	</bean>
+
+	<cache:annotation-driven />
+
+	<bean id="rememberMeAuthenticationProvider"
+		class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
+		<property name="key" value="metis" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="268435456" /> <!-- 256 megs -->
+	</bean>
+
+	<bean id="authorizationFilterBean" class="com.konkow.framework.web.view.filter.AuthorizationFilter">
+	</bean>
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<!-- SMTP settings -->
+		<property name="host" value="${smtp.host}" />
+		<property name="port" value="${smtp.port}" />
+		<property name="username" value="${smtp.username}" />
+		<property name="password" value="${smtp.password}" />
+		<property name="javaMailProperties">
+			<!-- additional properties specific to JavaMail -->
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"></bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:project.properties</value>
+				<value>file:${catalina.home}/conf/project.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="ignoreResourceNotFound" value="true" />
+	</bean>
+
+	<bean id="vfsPictureStorage" class="com.konkow.framework.data.vfs.VfsPictureStorage"
+		lazy-init="true">
+		<property name="fileSystemManager" ref="fileSystemManager" />
+	</bean>
+
+	<bean id="fileSystemManager" class="org.apache.commons.vfs2.impl.StandardFileSystemManager"
+		init-method="init" destroy-method="close" />
+
+</beans>
