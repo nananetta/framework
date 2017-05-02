@@ -6,10 +6,10 @@
 	    <artifactId>_metistemplate_</artifactId>
 	    <version>0.0.2-SNAPSHOT</version>
 	</parent>
-    <artifactId>_metistemplate_-app</artifactId>
-    <packaging>war</packaging>
+    <artifactId>_metistemplate_-report</artifactId>
+    <packaging>jar</packaging>
 
-	<name>_metistemplate_ Application</name>
+	<name>Reporting Module</name>
     <scm>
         <connection>scm:git:https://github.com/kkxcel/WebTemplate</connection>
         <developerConnection>scm:git:https://nananetta@github.com/kkxcel/WebTemplate</developerConnection>
@@ -26,26 +26,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.metis._orgname_</groupId>
-            <artifactId>_metistemplate_-core</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.metis._orgname_</groupId>
-            <artifactId>_metistemplate_-web</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.metis._orgname_</groupId>
-            <artifactId>_metistemplate_-ws</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.metis._orgname_</groupId>
-            <artifactId>_metistemplate_-report</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
 
     <build>

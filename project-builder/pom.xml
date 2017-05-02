@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.metis</groupId>
 	<artifactId>project-builder</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 
 	<scm>
@@ -14,7 +14,8 @@
 	</scm>
 
 	<properties>
-		<project.name>mitrpol</project.name>
+		<org.name>mitrphol</org.name>
+		<project.name>mpdispatch</project.name>
 	</properties>
 
 	<dependencies>
@@ -40,25 +41,60 @@
 									<destinationFile>${basedir}/../${project.name}/${project.name}-app/</destinationFile>
 								</fileSet>
 								<fileSet>
-									<sourceFile>${basedir}/../${project.name}/core/src/main/java/com/metis/_metistemplate_</sourceFile>
-									<destinationFile>${basedir}/../${project.name}/core/src/main/java/com/metis/${project.name}</destinationFile>
+									<sourceFile>${basedir}/../${project.name}/_metistemplate_-core/</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-core/</destinationFile>
 								</fileSet>
 								<fileSet>
-									<sourceFile>${basedir}/../${project.name}/web/src/main/java/com/metis/_metistemplate_</sourceFile>
-									<destinationFile>${basedir}/../${project.name}/web/src/main/java/com/metis/${project.name}</destinationFile>
+									<sourceFile>${basedir}/../${project.name}/_metistemplate_-report/</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-report/</destinationFile>
 								</fileSet>
 								<fileSet>
-									<sourceFile>${basedir}/../${project.name}/web/src/main/resources/com/metis/_metistemplate_</sourceFile>
-									<destinationFile>${basedir}/../${project.name}/web/src/main/resources/com/metis/${project.name}</destinationFile>
+									<sourceFile>${basedir}/../${project.name}/_metistemplate_-web/</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-web/</destinationFile>
 								</fileSet>
 								<fileSet>
-									<sourceFile>${basedir}/../${project.name}/report/src/main/java/com/metis/_metistemplate_</sourceFile>
-									<destinationFile>${basedir}/../${project.name}/report/src/main/java/com/metis/${project.name}</destinationFile>
+									<sourceFile>${basedir}/../${project.name}/_metistemplate_-ws/</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-ws/</destinationFile>
+								</fileSet>
+
+
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-core/src/main/java/com/metis/_orgname_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-core/src/main/java/com/metis/${org.name}</destinationFile>
 								</fileSet>
 								<fileSet>
-									<sourceFile>${basedir}/../${project.name}/ws/src/main/java/com/metis/_metistemplate_</sourceFile>
-									<destinationFile>${basedir}/../${project.name}/ws/src/main/java/com/metis/${project.name}</destinationFile>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/_orgname_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/${org.name}</destinationFile>
 								</fileSet>
+								
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/_orgname_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/${org.name}</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/_orgname_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/${org.name}</destinationFile>
+								</fileSet>
+
+								
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-core/src/main/java/com/metis/${org.name}/_metistemplate_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-core/src/main/java/com/metis/${org.name}/${project.name}</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/${org.name}/_metistemplate_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/${org.name}/${project.name}</destinationFile>
+								</fileSet>
+								
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/${org.name}/_metistemplate_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/${org.name}/${project.name}</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/${org.name}/_metistemplate_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/${org.name}/${project.name}</destinationFile>
+								</fileSet>
+								
 							</fileSets>
 						</configuration>
 					</execution>
@@ -84,6 +120,10 @@
 						<include>**/*.xml</include>
 					</includes>
 					<replacements>
+						<replacement>
+							<token>_orgname_</token>
+							<value>${org.name}</value>
+						</replacement>
 						<replacement>
 							<token>_metistemplate_</token>
 							<value>${project.name}</value>

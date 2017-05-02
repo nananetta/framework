@@ -7,16 +7,16 @@
 	    <version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>com.metis</groupId>
+	<groupId>com.metis._orgname_</groupId>
     <artifactId>_metistemplate_</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <modules>
-	    <module>core</module>
-	    <module>web</module>
-	    <module>ws</module>
-	    <module>report</module>
+	    <module>_metistemplate_-core</module>
+	    <module>_metistemplate_-web</module>
+	    <module>_metistemplate_-ws</module>
+	    <module>_metistemplate_-report</module>
 	    <module>_metistemplate_-app</module>
 	</modules>
 
