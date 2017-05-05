@@ -9,7 +9,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<title>_webtemplate_</title>
+<title>_metistemplate_</title>
 <link rel="stylesheet" href="${context}/resources/styles/bootstrap-Cerulean.css"/>
 <link rel="stylesheet" href="${context}/resources/styles/style.min.css"/>
 <link rel="stylesheet" href="${context }/resources/styles/kendo/2014.3.1119/kendo.common-bootstrap.min.css"/>
@@ -31,7 +31,7 @@
 <script type="text/javascript" src="${context}/resources/scripts/pages/popupCtrl.js"></script>
 <script type="text/javascript" src="${context}/resources/scripts/kendo/kendo.ui.core.min.js"></script>
 <script type="text/javascript" src="${context}/resources/scripts/kendo/kendo.angular.min.js"></script>
-<link href="${context}/resources/img/_webtemplate__logo.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="${context}/resources/img/_metistemplate__logo.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body ng-app="project" ng-controller="popupCtrl" ng-init="init()">

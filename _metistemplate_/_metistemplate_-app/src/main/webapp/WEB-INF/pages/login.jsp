@@ -24,7 +24,7 @@
 						<form id="frmLogin" action="<c:url value='j_spring_security_check' />" method="POST">
 							<div class="row">
 								<div class="col-md-12" style="padding-top: 8px;">
-									<center><a href="#"><img src="${context}/resources/img/_webtemplate__logo.png" style="vertical-align: text-bottom; width: 40%;"/></a></center>
+									<center><a href="#"><img src="${context}/resources/img/_metistemplate__logo.png" style="vertical-align: text-bottom; width: 40%;"/></a></center>
 								</div>
 							</div>
 							<div class="row">

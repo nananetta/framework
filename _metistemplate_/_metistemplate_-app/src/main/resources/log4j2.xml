@@ -5,7 +5,7 @@
             <PatternLayout
                 pattern="%d{HH:mm:ss,SSS} %-5p[%t] %15X{ip} %X{sessionId} %X{requestURI} %c - %m%n" />
         </Console>
-        <RollingFile name="file-appender" fileName="logs/_webtemplate_" filePattern="logs/_webtemplate_-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="file-appender" fileName="logs/_metistemplate_" filePattern="logs/_metistemplate_-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout
                 pattern="%d{HH:mm:ss,SSS} %-5p[%t] %15X{ip} %X{sessionId} %X{requestURI} %c - %m%n" />
             <Policies>

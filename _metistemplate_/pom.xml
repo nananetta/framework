@@ -21,9 +21,9 @@
 	</modules>
 
     <scm>
-        <connection>scm:git:https://github.com/kkxcel/_webtemplate_</connection>
-        <developerConnection>scm:git:https://nananetta@github.com/kkxcel/_webtemplate_</developerConnection>
-        <url>https://github.com/kkxcel/_webtemplate_</url>
+        <connection>scm:git:https://github.com/kkxcel/_metistemplate_</connection>
+        <developerConnection>scm:git:https://nananetta@github.com/kkxcel/_metistemplate_</developerConnection>
+        <url>https://github.com/kkxcel/_metistemplate_</url>
         <tag>HEAD</tag>
     </scm>
 

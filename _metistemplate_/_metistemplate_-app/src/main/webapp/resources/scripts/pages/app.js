@@ -67,7 +67,7 @@ app.factory('$dialogUtils', function() {
         dialog: function(str, buttons) {
         	bootbox.dialog({
         		  message: str,
-        		  title: "_webtemplate_",
+        		  title: "_metistemplate_",
         		  buttons: buttons
         		});
         }

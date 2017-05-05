@@ -8,7 +8,7 @@
 <head>
 
 <meta name="viewport" content="width=device-width" />
-<title>_webtemplate_ System</title>
+<title>_metistemplate_ System</title>
 <link rel="stylesheet" href="${context}/resources/styles/bootstrap-Cerulean.min.css" />
 <link rel="stylesheet" href="${context}/resources/styles/style.min.css" />
 <script type="text/javascript" src="${context}/resources/scripts/jquery-2.1.3.js"></script>
@@ -28,7 +28,7 @@
 <script type="text/javascript" src="${context}/resources/scripts/common_initial.js"></script>
 <script type="text/javascript" src="${context}/resources/scripts/session-idletime.js"></script>
 
-<link href="${context}/resources/img/_webtemplate__logo.png" rel="shortcut icon" type="image/x-icon" />
+<link href="${context}/resources/img/_metistemplate__logo.png" rel="shortcut icon" type="image/x-icon" />
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -85,9 +85,9 @@
 		<div class="container-fluid" style="border: 3px groove #800000; border-radius: 10px;">
 			<div class="row">
 				<div class="col-md-12" style="padding-top: 8px;">
-					<a href="#"><img src="${context}/resources/img/_webtemplate__logo.png"
+					<a href="#"><img src="${context}/resources/img/_metistemplate__logo.png"
 						style="vertical-align: text-bottom; width: 70px;" /></a>
-					<div style="display: inline-block; font-size: 18px;">&nbsp;_webtemplate_ System</div>
+					<div style="display: inline-block; font-size: 18px;">&nbsp;_metistemplate_ System</div>
 				</div>
 			</div>
 			<div class="row">
