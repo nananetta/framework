@@ -15,7 +15,7 @@
 
 	<properties>
 		<org.name>mitrphol</org.name>
-		<project.name>mpdispatch</project.name>
+		<project.name>abdispatch</project.name>
 	</properties>
 
 	<dependencies>
@@ -66,7 +66,10 @@
 									<sourceFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/_orgname_</sourceFile>
 									<destinationFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/${org.name}</destinationFile>
 								</fileSet>
-								
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-app/src/main/resources/com/metis/_orgname_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-app/src/main/resources/com/metis/${org.name}</destinationFile>
+								</fileSet>
 								<fileSet>
 									<sourceFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/_orgname_</sourceFile>
 									<destinationFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/${org.name}</destinationFile>
@@ -85,7 +88,10 @@
 									<sourceFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/${org.name}/_metistemplate_</sourceFile>
 									<destinationFile>${basedir}/../${project.name}/${project.name}-web/src/main/java/com/metis/${org.name}/${project.name}</destinationFile>
 								</fileSet>
-								
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-app/src/main/resources/com/metis/${org.name}/_metistemplate_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-app/src/main/resources/com/metis/${org.name}/${project.name}</destinationFile>
+								</fileSet>
 								<fileSet>
 									<sourceFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/${org.name}/_metistemplate_</sourceFile>
 									<destinationFile>${basedir}/../${project.name}/${project.name}-report/src/main/java/com/metis/${org.name}/${project.name}</destinationFile>

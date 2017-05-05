@@ -163,6 +163,25 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.png</include>
+                    <include>**/*.ttf</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
     
     <profiles>
@@ -261,7 +280,7 @@
             </build>
         </profile>
     </profiles>
-    
+
     <reporting>
         <plugins>
             <plugin>
