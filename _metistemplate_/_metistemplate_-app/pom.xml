@@ -23,6 +23,25 @@
 
         <checkstyle.config.location>config/checkstyle.xml</checkstyle.config.location>
 
+        <tomcat.version>8.5.14</tomcat.version>
+        
+        <db.jdbc.driver>oracle.jdbc.driver.OracleDriver</db.jdbc.driver>
+        <db.hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</db.hibernate.dialect>
+        <report.url>http://metiscorp.cloudapp.net/ReportServer_SQLEXPRESS?/ExchangePrj/Reports/</report.url>
+        <report.username>nananetta</report.username>
+        <report.password>P@ssword</report.password>
+
+        <!-- CLOUD CONNECTION CONFIG -->
+        <db.url>jdbc:oracle:thin:@metiscorp.cloudapp.net:1521:XE</db.url>
+        <db.username>smartaccount</db.username>
+        <db.password>password</db.password>
+        <basedir.path>d:/Users/nananetta/Documents/dev/SA/</basedir.path>
+        <smtp.host>smtp.gmail.com</smtp.host>
+        <smtp.port>587</smtp.port>
+        <smtp.username>dbdysa2559@gmail.com</smtp.username>
+        <smtp.password>konkow1999</smtp.password>
+        <idle.timeout>90</idle.timeout>
+        <idle.timeout.enabled>false</idle.timeout.enabled>
     </properties>
 
     <dependencies>
@@ -67,6 +86,57 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.4</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <configuration>
+                            <charset>UTF-8</charset>
+                            <cssSourceDir>resources/styles</cssSourceDir>
+                            <cssSourceIncludes>
+                                <cssSourceInclude>web-styles.css</cssSourceInclude>
+                            </cssSourceIncludes>
+                            <cssFinalFile>style.css</cssFinalFile>
+                            <jsSourceDir>resources/scripts/pages</jsSourceDir>
+                            <jsSourceIncludes>
+                                <jsSourceInclude>**/*.js</jsSourceInclude>
+                            </jsSourceIncludes>
+                            <jsSourceExcludes>
+                                <jsSourceExclude>**/app.js</jsSourceExclude>
+                                <jsSourceExclude>**/map/*.js</jsSourceExclude>
+                                <jsSourceExclude>**/map/directives/*.js</jsSourceExclude>
+                                <jsSourceExclude>**/map/services/*.js</jsSourceExclude>
+                            </jsSourceExcludes>
+                            <jsFinalFile>all.js</jsFinalFile>
+                            <jsEngine>YUI</jsEngine>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <warName>${rp.build.warname}</warName>
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/resources</directory>
+                            <includes>
+                                <include>**/*.css</include>
+                                <include>images/*</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>${maven.release.version}</version>
                 <dependencies>
@@ -77,8 +147,120 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.3.v20140905</version>
+                <configuration>
+                    <httpConnector>
+                        <port>8090</port>
+                    </httpConnector>
+                    <jvmArgs>-Xmx1024m -Xms256m -XX:PermSize=256m -XX:MaxPermSize=512m</jvmArgs>
+                    <webApp>
+                        <contextPath>${web.context}</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    
+    <profiles>
+        <profile>
+            <id>jetty</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <warName>${rp.build.warname}</warName>
+                            <webResources>
+                                <resource>
+                                    <filtering>true</filtering>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>**/*.css</include>
+                                        <include>images/*</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <version>9.2.3.v20140905</version>
+                        <configuration>
+                            <httpConnector>
+                                <port>8090</port>
+                            </httpConnector>
+                            <jvmArgs>-Xmx1024m -Xms256m -XX:PermSize=256m -XX:MaxPermSize=512m</jvmArgs>
+                            <webApp>
+                                <contextPath>${web.context}</contextPath>
+                            </webApp>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>resources</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.7</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.maven.shared</groupId>
+                                <artifactId>maven-filtering</artifactId>
+                                <version>1.3</version>
+                            </dependency>
+                        </dependencies>
+                        <executions>
+                            <execution>
+                                <id>copy-resources-static</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>target/${project.build.finalName}</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/webapp</directory>
+                                            <filtering>false</filtering>
+                                            <includes>
+                                                <include>**/*</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>src/main/resources</directory>
+                                            <filtering>false</filtering>
+                                            <includes>
+                                                <include>**/*.css</include>
+                                                <include>images/*</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     
     <reporting>
         <plugins>
