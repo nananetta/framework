@@ -290,7 +290,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>target/${project.build.finalName}</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/apache-tomcat-${tomcat.version}/webapps/_orgname_</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>src/main/webapp</directory>
