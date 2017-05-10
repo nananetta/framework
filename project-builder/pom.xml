@@ -15,7 +15,7 @@
 
 	<properties>
 		<org.name>mitrphol</org.name>
-		<project.name>abdispatch</project.name>
+		<project.name>xxdispatch</project.name>
 	</properties>
 
 	<dependencies>
@@ -56,6 +56,10 @@
 									<sourceFile>${basedir}/../${project.name}/_metistemplate_-ws/</sourceFile>
 									<destinationFile>${basedir}/../${project.name}/${project.name}-ws/</destinationFile>
 								</fileSet>
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/_metistemplate_-test/</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-test/</destinationFile>
+								</fileSet>
 
 
 								<fileSet>
@@ -78,6 +82,10 @@
 									<sourceFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/_orgname_</sourceFile>
 									<destinationFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/${org.name}</destinationFile>
 								</fileSet>
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-test/src/test/java/com/metis/_orgname_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-test/src/test/java/com/metis/${org.name}</destinationFile>
+								</fileSet>
 
 								
 								<fileSet>
@@ -99,6 +107,10 @@
 								<fileSet>
 									<sourceFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/${org.name}/_metistemplate_</sourceFile>
 									<destinationFile>${basedir}/../${project.name}/${project.name}-ws/src/main/java/com/metis/${org.name}/${project.name}</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${basedir}/../${project.name}/${project.name}-test/src/test/java/com/metis/${org.name}/_metistemplate_</sourceFile>
+									<destinationFile>${basedir}/../${project.name}/${project.name}-test/src/test/java/com/metis/${org.name}/${project.name}</destinationFile>
 								</fileSet>
 								
 							</fileSets>
@@ -126,6 +138,7 @@
 						<include>**/*.xml</include>
 						<include>**/*.js</include>
 						<include>**/*.jsp</include>
+						<include>**/*.txt</include>
 					</includes>
 					<replacements>
 						<replacement>

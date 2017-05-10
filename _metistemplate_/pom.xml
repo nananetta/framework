@@ -17,7 +17,7 @@
 	    <module>_metistemplate_-web</module>
 	    <module>_metistemplate_-ws</module>
 	    <module>_metistemplate_-report</module>
-	    <!-- <module>_metistemplate_-app</module> -->
+	    <module>_metistemplate_-app</module>
 	</modules>
 
     <scm>

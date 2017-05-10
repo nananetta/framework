@@ -1,6 +1,6 @@
-*************
-Instructions
-*************
+***************
+ Instructions
+***************
 
 At root folder, you can run these commands 
 
@@ -8,8 +8,10 @@ At root folder, you can run these commands
   mvn clean install
   
 ### Start Tomcat8 and deploy package from local repository ###
-  mvn -pl <project_name>-app cargo:run
+  mvn -pl _metistemplate_-app cargo:run
   
 ### Replace web files ###
-  mvn -pl <project_name>-app -Presources process-resources
+  mvn -pl _metistemplate_-app -Presources process-resources
   
+### Run Test ###
+  mvn test
