@@ -23,9 +23,6 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 public class LoginAdminTest extends AbstractTest {
 	
-  private static final String FOLDER = "target/screenshots/";
-  private WebDriver driver;
-  private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
@@ -37,7 +34,6 @@ public class LoginAdminTest extends AbstractTest {
   @Before
   public void setUp() throws Exception {
     driver = new ChromeDriver();
-    baseUrl = "http://localhost:8080";
     String path = new File(".").getCanonicalPath();
     System.out.println("PATH:: "+path);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -45,7 +41,7 @@ public class LoginAdminTest extends AbstractTest {
 
   @Test
   public void testLoginAdmin() throws Exception {
-    driver.get(baseUrl + "/"+CONTEXT+"/login.html");
+    driver.get(baseUrl + CONTEXT+"/login.html");
     driver.findElement(By.id("Username")).clear();
     driver.findElement(By.id("Username")).sendKeys("admin");
     driver.findElement(By.id("Password")).clear();

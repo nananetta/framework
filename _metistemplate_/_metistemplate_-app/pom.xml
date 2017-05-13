@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <checkstyle.config.location>config/checkstyle.xml</checkstyle.config.location>
-
+		<default.page.size>20</default.page.size>
         <tomcat.version>8.5.14</tomcat.version>
         
         <db.jdbc.driver>oracle.jdbc.driver.OracleDriver</db.jdbc.driver>

@@ -11,8 +11,9 @@ import org.openqa.selenium.OutputType;
 
 public abstract class AbstractTest {
 
-	private static final String FOLDER = "screenshots/";
+	private static final String FOLDER = "target/screenshots/";
 	protected String CONTEXT = "_metistemplate_";
+	protected String baseUrl = "http://localhost:8080/";
 	protected WebDriver driver;
 
 	

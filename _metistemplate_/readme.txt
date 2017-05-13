@@ -13,5 +13,5 @@ At root folder, you can run these commands
 ### Replace web files ###
   mvn -pl _metistemplate_-app -Presources process-resources
   
-### Run Test ###
+### Run Test (Run below command under _metistemplate_-test folder) ###
   mvn test
